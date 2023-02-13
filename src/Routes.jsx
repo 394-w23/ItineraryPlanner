@@ -6,7 +6,7 @@ import { Routes as BaseRoutes, Route, Navigate } from "react-router-dom";
 const Routes = () => {
     return (
       <BaseRoutes>
-        <Route exact path="/" element={<LocationPage />} />
+        <Route exact path="/" element={<LocationPage city="Paris"/>} />
         <Route exact path="/adventurepage" element={<AdventurePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </BaseRoutes>
