@@ -7,7 +7,7 @@ const Routes = () => {
     return (
       <BaseRoutes>
         <Route exact path="/" element={<LocationPage city="Paris"/>} />
-        <Route exact path="/adventurepage" element={<AdventurePage />} />
+        <Route exact path="/adventures" element={<AdventurePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </BaseRoutes>
     );

@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { useCallback, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, update } from 'firebase/database';
+import { getDatabase, onValue, ref, update, get } from 'firebase/database';
 
 
 // Your web app's Firebase configuration
@@ -50,4 +50,29 @@ export const useDbData = (path) => {
     }, [database, path]);
   
     return [updateData, result];
+  };
+
+  export const updateDatabase = (updates) => {
+    const db = getDatabase();
+    return update(ref(db), updates);
+  };
+
+  export const getData = async (path) => {
+    const db = getDatabase();
+    const snapshot = await get(ref(db, path));
+    const data = snapshot.val();
+    return data;
+  };
+
+  export const writeScheduleData = (params) => {
+    const db = getDatabase();
+    set(ref(db, "adventure"), {
+      // default empty if no value passed
+      // params are address, description, image, name, web address
+      address: params.address || "",
+      description: params.description || "",
+      image: params.image || "",
+      name: params.name || "",
+      webAddress: params.webAddress || "",
+    });
   };
