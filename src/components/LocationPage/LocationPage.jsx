@@ -19,8 +19,12 @@ export default function LocationPage() {
     return (
        <div>
         {locationData.map((location, idx) => (
+            <div>
             <LocationCard key={idx} location={location} />
+            </div>
         ))}
+        
        </div>
+
     );
 }
