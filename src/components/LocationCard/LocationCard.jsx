@@ -22,9 +22,9 @@ const LocationCard = ({ location }) => {
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
-        <Card.Text>
+        {/* <Card.Text>
           {location.address}
-        </Card.Text>
+        </Card.Text> */}
         <iframe
                 width = "100%"
                 height="auto"

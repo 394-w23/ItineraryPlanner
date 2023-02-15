@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import { useDbData } from "../../utilities/firebase";
 import LocationCard from "../LocationCard/LocationCard";
+import './LocationPage.css'
+
 
 export default function LocationPage() {
     const [data, error] = useDbData();
@@ -17,13 +19,12 @@ export default function LocationPage() {
     }
 
     return (
-       <div>
+       <div className="location-cards">
         {locationData.map((location, idx) => (
             <div>
             <LocationCard key={idx} location={location} />
             </div>
         ))}
-        
        </div>
 
     );
