@@ -19,13 +19,17 @@ export default function LocationPage() {
     }
 
     return (
-       <div className="location-cards">
-        {locationData.map((location, idx) => (
-            <div>
-            <LocationCard key={idx} location={location} />
+        <>
+            <h1>My Options</h1>
+            <div className="location-cards">
+            {locationData.map((location, idx) => (
+                <div>
+                <LocationCard key={idx} location={location} />
+                </div>
+            ))}
             </div>
-        ))}
-       </div>
+        </>
+       
 
     );
 }

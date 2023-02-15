@@ -5,7 +5,7 @@ import { getData, updateDatabase } from "../../utilities/firebase";
 
 const LocationCard = ({ location }) => {
 
-  console.log(location)
+  console.log("location", location)
 
   const saveLocation = async () => {
     // Get the 1st adventure
@@ -22,9 +22,6 @@ const LocationCard = ({ location }) => {
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
-        {/* <Card.Text>
-          {location.address}
-        </Card.Text> */}
         <iframe
                 width = "100%"
                 height="auto"

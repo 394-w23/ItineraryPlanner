@@ -1,23 +1,25 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-const AdventureCard = ({ adventure }) => {
+const AdventureCard = ({ adventureLocation }) => {
 
-  console.log(adventure)
+  console.log("adventureLocation", adventureLocation)
+
+  const removeLocation = async () => {
+    // TODO
+  }
 
   return (
-    <>
-    {adventure.locations.map(location => 
-        (<Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={location.image} />
-        <Card.Body>
-          <Card.Title>{location.name}</Card.Title>
-          <Card.Text>
-            {location.address}
-          </Card.Text>
-        </Card.Body>
-      </Card>))}
-    </>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={adventureLocation.image} />
+      <Card.Body>
+        <Card.Title>{adventureLocation.name}</Card.Title>
+        <Card.Text>Estimated Travel Time: 10min</Card.Text>
+        <Card.Text>Estimated Leisure Time: 50min</Card.Text>
+        <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>
+      </Card.Body>
+    </Card>
   )
 }
 

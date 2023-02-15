@@ -1,4 +1,8 @@
-.location-cards {
+h1 {
+    margin: 5%;
+}
+
+.adventure-cards {
     display: flex;
     margin: 2.5%;
     overflow-x: scroll;
