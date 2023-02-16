@@ -7,7 +7,7 @@ export default function NavbarApp() {
         <div>
         <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/" data-cy="pageTitle">Itinerary Planner</Navbar.Brand>
+                <Navbar.Brand href="/" data-cy="pageTitle">Squirrel</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
