@@ -21,9 +21,9 @@ export default function AdventurePage() {
         <>
             <h1>My Selected Options</h1>
             <div className="adventure-cards">
-            {adventureData.map((adventureLocation, idx) => (
-                <div>
-                <AdventureCard key={idx} adventureLocation={adventureLocation} />
+            {adventureData.map((adventureLocation) => (
+                <div key={adventureLocation.id}>
+                    <AdventureCard adventureLocation={adventureLocation} />
                 </div>
             ))}
             </div>

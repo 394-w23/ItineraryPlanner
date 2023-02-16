@@ -9,7 +9,7 @@ const LocationCard = ({ location }) => {
     // Get the 1st adventure
     const adventure = await getData("adventures/adventure-id-1");
     const updates = {};
-    let savedLocations = adventure.locations ? adventure.locations : [];
+    let savedLocations = Array.isArray(adventure.locations) ? adventure.locations : [];
 
     // only push if it is not already saved
     const matches = savedLocations.filter(function (savedLocation) {

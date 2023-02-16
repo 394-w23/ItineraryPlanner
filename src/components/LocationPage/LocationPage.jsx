@@ -23,9 +23,9 @@ export default function LocationPage() {
             <h1>My Remaining Options</h1>
             <div className="location-cards">
             {locationData.map((location, idx) => (
-                <div>
-                <LocationCard key={idx} location={location} />
-                </div>
+            <div key={location.id}>
+                <LocationCard location={location} />
+            </div>
             ))}
             </div>
         </>
