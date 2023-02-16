@@ -3,7 +3,7 @@ h1 {
 }
 
 .adventure-cards {
-    display: flex;
+    /* display: flex; */
     margin: 2.5%;
     overflow-x: scroll;
     width: 95%;
