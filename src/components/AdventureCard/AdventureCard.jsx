@@ -3,9 +3,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 const AdventureCard = ({ adventureLocation }) => {
-
-  console.log("adventureLocation", adventureLocation)
-
   const removeLocation = async () => {
     // TODO
   }

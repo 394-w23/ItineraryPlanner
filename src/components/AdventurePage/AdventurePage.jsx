@@ -11,17 +11,15 @@ export default function AdventurePage() {
     const adventure = "adventure-id-1"
 
     useEffect(() => {
-        console.log(data)
         if (data) setAdventureData(Object.values(data.adventures[adventure]["locations"]))
     }, [data])
 
     if (!data) {
         return <p>Loading</p>
     }
-    console.log("setAdventureData", setAdventureData)
     return (
         <>
-            <h1>My Adventure</h1>
+            <h1>My Selected Options</h1>
             <div className="adventure-cards">
             {adventureData.map((adventureLocation, idx) => (
                 <div>

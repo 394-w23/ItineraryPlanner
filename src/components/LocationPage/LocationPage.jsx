@@ -20,7 +20,7 @@ export default function LocationPage() {
 
     return (
         <>
-            <h1>My Options</h1>
+            <h1>My Remaining Options</h1>
             <div className="location-cards">
             {locationData.map((location, idx) => (
                 <div>

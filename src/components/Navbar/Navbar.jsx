@@ -3,10 +3,6 @@ import { Container, Nav, Navbar, NavDropdown, Image } from "react-bootstrap";
 import { useDbData } from "../../utilities/firebase";
 
 export default function NavbarApp() {
-    const [data, error] = useDbData();
-    if (data !== undefined) {
-        console.log("database", data);
-    }
     return (
         <div>
         <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg">
