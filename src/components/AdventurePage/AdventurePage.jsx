@@ -11,17 +11,24 @@ export default function AdventurePage() {
     const user = "user1"
 
     useEffect(() => {
-        if (data) setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]))
+        if (data) {
+            if (data.users[user]["adventure"]["selectedLocations"]) {
+                setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]));
+            } else {
+                setSelectedLocations([]);
+            }
+        }
     }, [data])
 
     if (!data) {
         return <p>Loading</p>
     }
+    console.log("selectedLocations", selectedLocations)
     return (
         <>
             <h1>My Selected Options</h1>
             <div className="adventure-cards">
-            {selectedLocations.map((location) => (
+            {selectedLocations.length > 0 && selectedLocations.map((location) => (
                 <div key={location.id}>
                     <AdventureCard location={location} />
                 </div>

@@ -11,7 +11,13 @@ export default function LocationPage() {
     const user = "user1"
 
     useEffect(() => {
-        if (data) setRemainingLocations(Object.values(data.users[user]["adventure"]["remainingLocations"]))
+        if (data) {
+            if (data.users[user]["adventure"]["remainingLocations"]) {
+            setRemainingLocations(Object.values(data.users[user]["adventure"]["remainingLocations"]))
+            } else {
+                setRemainingLocations([])
+            }
+        }
     }, [data])
 
     if (!data) {
@@ -22,7 +28,7 @@ export default function LocationPage() {
         <>
             <h1>My Remaining Options</h1>
             <div className="location-cards">
-            {remainingLocations.map((location, idx) => (
+            {remainingLocations.length > 0 && remainingLocations.map((location, idx) => (
             <div key={location.id}>
                 <LocationCard location={location} />
             </div>

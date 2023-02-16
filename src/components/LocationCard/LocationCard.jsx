@@ -8,9 +8,12 @@ const LocationCard = ({ location }) => {
   const saveLocation = async () => {
     const selectedLocationsUpdated = {}
     const remainingLocationsUpdated = {}
-    const selectedLocations = await getData("users/user1/adventure/selectedLocations");
+    let selectedLocations = await getData("users/user1/adventure/selectedLocations");
     const remainingLocations = await getData("users/user1/adventure/remainingLocations");
     
+    if (selectedLocations == null) {
+      selectedLocations = [];
+    }
 
     // only push if it is not already saved
     const matches = selectedLocations.filter(function (savedLocation) {
@@ -23,7 +26,7 @@ const LocationCard = ({ location }) => {
       selectedLocationsUpdated["users/user1/adventure/selectedLocations"] = selectedLocations;
       updateDatabase(selectedLocationsUpdated);
 
-      // remove from remainingOptions
+      // remove from remainingLocations
       remainingLocationsUpdated["users/user1/adventure/remainingLocations"] = remainingLocations.filter(function (remainingLocation) {
         return remainingLocation.name != location.name;
       });

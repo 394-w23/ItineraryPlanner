@@ -9,8 +9,12 @@ const AdventureCard = ({ location }) => {
     const selectedLocationsUpdated = {}
     const remainingLocationsUpdated = {}
     const selectedLocations = await getData("users/user1/adventure/selectedLocations");
-    const remainingLocations = await getData("users/user1/adventure/remainingLocations");
+    let remainingLocations = await getData("users/user1/adventure/remainingLocations");
     
+    if (remainingLocations == null) {
+      remainingLocations = [];
+    }
+
     // add to remainingLocations
     remainingLocations.push(location);
     remainingLocationsUpdated["users/user1/adventure/remainingLocations"] = remainingLocations;
