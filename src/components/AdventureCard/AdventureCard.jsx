@@ -28,7 +28,7 @@ const AdventureCard = ({ location }) => {
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', margin: '1rem' }}>
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
