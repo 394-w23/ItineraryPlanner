@@ -7,11 +7,11 @@ import '../AdventurePage/AdventurePage.css'
 
 export default function AdventurePage() {
     const [data, error] = useDbData();
-    const [adventureData, setAdventureData] = useState([])
-    const adventure = "adventure-id-1"
+    const [selectedLocations, setSelectedLocations] = useState([])
+    const user = "user1"
 
     useEffect(() => {
-        if (data) setAdventureData(Object.values(data.adventures[adventure]["locations"]))
+        if (data) setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]))
     }, [data])
 
     if (!data) {
@@ -21,9 +21,9 @@ export default function AdventurePage() {
         <>
             <h1>My Selected Options</h1>
             <div className="adventure-cards">
-            {adventureData.map((adventureLocation) => (
-                <div key={adventureLocation.id}>
-                    <AdventureCard adventureLocation={adventureLocation} />
+            {selectedLocations.map((location) => (
+                <div key={location.id}>
+                    <AdventureCard location={location} />
                 </div>
             ))}
             </div>

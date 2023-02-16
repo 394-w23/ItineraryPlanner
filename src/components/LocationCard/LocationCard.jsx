@@ -6,19 +6,28 @@ import { getData, updateDatabase } from "../../utilities/firebase";
 const LocationCard = ({ location }) => {
 
   const saveLocation = async () => {
-    // Get the 1st adventure
-    const adventure = await getData("adventures/adventure-id-1");
-    const updates = {};
-    let savedLocations = Array.isArray(adventure.locations) ? adventure.locations : [];
+    const selectedLocationsUpdated = {}
+    const remainingLocationsUpdated = {}
+    const selectedLocations = await getData("users/user1/adventure/selectedLocations");
+    const remainingLocations = await getData("users/user1/adventure/remainingLocations");
+    
 
     // only push if it is not already saved
-    const matches = savedLocations.filter(function (savedLocation) {
+    const matches = selectedLocations.filter(function (savedLocation) {
       return savedLocation.name === location.name;
     });
+    
     if (matches.length == 0) {
-      savedLocations.push(location);
-      updates["adventures/" + "adventure-id-1" + "/locations"] = savedLocations;
-      updateDatabase(updates);
+      // add to remainingOptions
+      selectedLocations.push(location);
+      selectedLocationsUpdated["users/user1/adventure/selectedLocations"] = selectedLocations;
+      updateDatabase(selectedLocationsUpdated);
+
+      // remove from remainingOptions
+      remainingLocationsUpdated["users/user1/adventure/remainingLocations"] = remainingLocations.filter(function (remainingLocation) {
+        return remainingLocation.name != location.name;
+      });
+      updateDatabase(remainingLocationsUpdated);
     }
   };
 

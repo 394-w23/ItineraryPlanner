@@ -7,11 +7,11 @@ import './LocationPage.css'
 
 export default function LocationPage() {
     const [data, error] = useDbData();
-    const [locationData, setLocationData] = useState([])
-    const city = "Paris"
+    const [remainingLocations, setRemainingLocations] = useState([])
+    const user = "user1"
 
     useEffect(() => {
-        if (data) setLocationData(Object.values(data.locations[city]))
+        if (data) setRemainingLocations(Object.values(data.users[user]["adventure"]["remainingLocations"]))
     }, [data])
 
     if (!data) {
@@ -22,7 +22,7 @@ export default function LocationPage() {
         <>
             <h1>My Remaining Options</h1>
             <div className="location-cards">
-            {locationData.map((location, idx) => (
+            {remainingLocations.map((location, idx) => (
             <div key={location.id}>
                 <LocationCard location={location} />
             </div>

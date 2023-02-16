@@ -3,28 +3,31 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getData, updateDatabase } from "../../utilities/firebase";
 
-const AdventureCard = ({ adventureLocation }) => {
+const AdventureCard = ({ location }) => {
+
   const removeLocation = async () => {
-    // Get the adventure
-    const adventure = await getData("adventures/adventure-id-1");
-    const savedLocations = adventure.locations || [];
+    const selectedLocationsUpdated = {}
+    const remainingLocationsUpdated = {}
+    const selectedLocations = await getData("users/user1/adventure/selectedLocations");
+    const remainingLocations = await getData("users/user1/adventure/remainingLocations");
+    
+    // add to remainingLocations
+    remainingLocations.push(location);
+    remainingLocationsUpdated["users/user1/adventure/remainingLocations"] = remainingLocations;
+    updateDatabase(remainingLocationsUpdated);
 
-    // Filter out the location to be removed
-    const newSavedLocations = savedLocations.filter((location) => {
-      return location.name !== adventureLocation.name;
+    // remove from remainingLocations
+    selectedLocationsUpdated["users/user1/adventure/selectedLocations"] = selectedLocations.filter(function (selectedLocation) {
+      return selectedLocation.name != location.name;
     });
-
-    // Update the adventure's saved locations in Firebase
-    const updates = {};
-    updates["adventures/" + "adventure-id-1" + "/locations"] = newSavedLocations;
-    updateDatabase(updates);
+    updateDatabase(selectedLocationsUpdated);
   }
 
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={adventureLocation.image} />
+      <Card.Img variant="top" src={location.image} />
       <Card.Body>
-        <Card.Title>{adventureLocation.name}</Card.Title>
+        <Card.Title>{location.name}</Card.Title>
         <Card.Text>Estimated Travel Time: 10min</Card.Text>
         <Card.Text>Estimated Leisure Time: 50min</Card.Text>
         <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>
