@@ -32,7 +32,7 @@ const AdventureCard = ({ location }) => {
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
-        <Card.Text>Minimum Time Needed: 1hr</Card.Text>
+        <Card.Text>Suggested Time: 1hr</Card.Text>
         <iframe
                 width = "100%"
                 height="auto"

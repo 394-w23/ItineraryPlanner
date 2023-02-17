@@ -26,7 +26,7 @@ export default function AdventurePage() {
     console.log("selectedLocations", selectedLocations)
     return (
         <>
-            <h1>My Selected Options</h1>
+            <h3 style={{padding:"10px"}}>My Selected Options</h3>
             <div className="adventure-cards">
             {selectedLocations.length > 0 && selectedLocations.map((location) => (
                 <div key={location.id}>
