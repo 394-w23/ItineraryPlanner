@@ -33,12 +33,6 @@ const AdventureCard = ({ location }) => {
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
         <Card.Text>Suggested Time: 1hr</Card.Text>
-        <iframe
-                width = "100%"
-                height="auto"
-                src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin="13 Rue du Mail, 75002 Paris, France"&destination=${location.address}&mode=walking`}
-                >
-            </iframe>
         <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>
       </Card.Body>
     </Card>
