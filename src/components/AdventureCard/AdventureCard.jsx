@@ -4,6 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { getData, updateDatabase } from "../../utilities/firebase";
 
 const AdventureCard = ({ location }) => {
+  console.log("location", location)
 
   const removeLocation = async () => {
     const selectedLocationsUpdated = {}
@@ -33,7 +34,7 @@ const AdventureCard = ({ location }) => {
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
         <Card.Text>Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr</Card.Text>
-        <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>
+        {!location["startOrEnd"] && <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>}
       </Card.Body>
     </Card>
   )
