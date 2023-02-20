@@ -15,13 +15,7 @@ export default function AdventurePage() {
     useEffect(() => {
         if (data) {
             if (data.users[user]["adventure"]["selectedLocations"]) {
-                var all_locs = [data.users[user]["start location"]]
-                for (let i = 0; i < Object.values(data.users[user]["adventure"]["selectedLocations"]).length; i++) {
-                    all_locs.push(Object.values(data.users[user]["adventure"]["selectedLocations"])[i])
-                }
-                all_locs.push(data.users[user]["end location"])
-                console.log(all_locs)
-                setSelectedLocations(all_locs);
+                setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]));
             } else {
                 setSelectedLocations([]);
             }
@@ -34,9 +28,9 @@ export default function AdventurePage() {
     // console.log("selectedLocations", selectedLocations)
     return (
         <>
+            <WaypointMap selectedLocations={selectedLocations}/>
             <h3 style={{padding:"10px"}}>My Selected Options</h3>
             <div className="adventure-cards">
-            <WaypointMap selectedLocations={selectedLocations}/>
             {selectedLocations.length > 0 && selectedLocations.map((location) => (
                 <div key={location.id}>
                     <AdventureCard location={location} />
