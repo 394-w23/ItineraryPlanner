@@ -32,7 +32,7 @@ const AdventureCard = ({ location }) => {
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
-        <Card.Text>Suggested Time: 1hr</Card.Text>
+        <Card.Text>Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr</Card.Text>
         <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>
       </Card.Body>
     </Card>
