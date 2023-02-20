@@ -1,24 +1,27 @@
-import { getData, updateDatabase } from "../../utilities/firebase";
+import React, { useEffect, useState } from "react";
+import { useDbData } from "../../utilities/firebase";
 
 const WaypointMap=  () => {
-    const saveLocation = async () => {
-        const selectedLocationsUpdated = {}
-        const remainingLocationsUpdated = {}
-        let selectedLocations = await getData("users/user1/adventure/selectedLocations");
-        const remainingLocations = await getData("users/user1/adventure/remainingLocations");
-        
-        if (selectedLocations == null) {
-          selectedLocations = [];
+    const [data, error] = useDbData();
+    const [selectedLocations, setSelectedLocations] = useState([])
+    const user = "user1"
+
+    useEffect(() => {
+        if (data) {
+            if (data.users[user]["adventure"]["selectedLocations"]) {
+                setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]));
+            } else {
+                setSelectedLocations([]);
+            }
         }
-        if (!selectedLocations) {
-            return <h1>loading</h1>
-            //const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
-        }
-        return selectedLocations
+    }, [data])
+
+    if (!data) {
+        return <p>Loading</p>
     }
+    console.log("selectedLocations", selectedLocations)
+
     
-    let test = saveLocation()
-    console.log(test)
     
 
     //const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
