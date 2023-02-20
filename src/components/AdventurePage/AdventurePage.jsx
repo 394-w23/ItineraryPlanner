@@ -29,7 +29,7 @@ export default function AdventurePage() {
         <>
             <h3 style={{padding:"10px"}}>My Selected Options</h3>
             <div className="adventure-cards">
-            <WaypointMap selectedLocations={selectedLocations}/>
+            {/* <WaypointMap selectedLocations={selectedLocations}/> */}
             {selectedLocations.length > 0 && selectedLocations.map((location) => (
                 <div key={location.id}>
                     <AdventureCard location={location} />
