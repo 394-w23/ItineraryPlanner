@@ -18,7 +18,6 @@ const TimerComponent = () => (
 export default function TimeLeft() {
     const [data, error] = useDbData();
     const [selectedLocations, setSelectedLocations] = useState([])
-    const [remainingTime, setRemainingTime] = useState(0)
     const user = "user1"
 
     useEffect(() => {
@@ -41,8 +40,6 @@ export default function TimeLeft() {
 
          return currRemainingTime 
     }
-
-    console.log(remainingTime)
     
     return (
         <div className="time-left-banner">
