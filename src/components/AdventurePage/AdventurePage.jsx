@@ -11,10 +11,17 @@ export default function AdventurePage() {
     const [selectedLocations, setSelectedLocations] = useState([])
     const user = "user1"
 
+
     useEffect(() => {
         if (data) {
             if (data.users[user]["adventure"]["selectedLocations"]) {
-                setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]));
+                var all_locs = [data.users[user]["start location"]]
+                for (let i = 0; i < Object.values(data.users[user]["adventure"]["selectedLocations"]).length; i++) {
+                    all_locs.push(Object.values(data.users[user]["adventure"]["selectedLocations"])[i])
+                }
+                all_locs.push(data.users[user]["end location"])
+                console.log(all_locs)
+                setSelectedLocations(all_locs);
             } else {
                 setSelectedLocations([]);
             }
