@@ -7,7 +7,7 @@ const TimerComponent = () => (
     
 <ProgressTimer
   direction="left"
-  duration={3*60*60}
+  duration={60*60}
   label="3 hours left"
   onFinish={function noRefCheck(){}}
   rootRounded
@@ -18,7 +18,6 @@ const TimerComponent = () => (
 export default function TimeLeft() {
     const [data, error] = useDbData();
     const [selectedLocations, setSelectedLocations] = useState([])
-    const [remainingTime, setRemainingTime] = useState(0)
     const user = "user1"
 
     useEffect(() => {
@@ -41,8 +40,6 @@ export default function TimeLeft() {
 
          return currRemainingTime 
     }
-
-    console.log(remainingTime)
     
     return (
         <div className="time-left-banner">
