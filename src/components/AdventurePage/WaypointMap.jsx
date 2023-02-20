@@ -1,14 +1,25 @@
 import { getData, updateDatabase } from "../../utilities/firebase";
 
-const WaypointMap= async () => {
-    let selectedLocations = await getData("users/user1/adventure/selectedLocations");
-    
-
-    if (!selectedLocations) {
-        return <h1>loading</h1>
-        //const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
+const WaypointMap=  () => {
+    const saveLocation = async () => {
+        const selectedLocationsUpdated = {}
+        const remainingLocationsUpdated = {}
+        let selectedLocations = await getData("users/user1/adventure/selectedLocations");
+        const remainingLocations = await getData("users/user1/adventure/remainingLocations");
+        
+        if (selectedLocations == null) {
+          selectedLocations = [];
+        }
+        if (!selectedLocations) {
+            return <h1>loading</h1>
+            //const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
+        }
+        return selectedLocations
     }
-    console.log(selectedLocations)
+    
+    let test = saveLocation()
+    console.log(test)
+    
 
     //const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
     
