@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDbData } from "../../utilities/firebase";
 import './TimeLeft.css'
+import ProgressTimer from 'react-progress-bar-timer';
 
+const TimerComponent = () => (
+    
+<ProgressTimer
+  direction="left"
+  duration={3*60*60}
+  label="3 hours left"
+  onFinish={function noRefCheck(){}}
+  rootRounded
+  started={true}
+  variant="fill"
+ />
+  );
 export default function TimeLeft() {
     const [data, error] = useDbData();
     const [selectedLocations, setSelectedLocations] = useState([])
