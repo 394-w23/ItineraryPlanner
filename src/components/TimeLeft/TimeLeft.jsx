@@ -3,8 +3,8 @@ import './TimeLeft.css'
 export default function TimeLeft() {
     
     return (
-        <>
-        <h1 className="time-left">Based on your selections <br/> you have 3 hours left</h1>
-        </>
+        <div className="time-left-banner">
+        <h4 className="time-left">Based on your selections you have 3 hours left</h4>
+        </div>
     )
 }

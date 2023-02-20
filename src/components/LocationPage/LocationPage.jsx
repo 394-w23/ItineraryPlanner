@@ -25,7 +25,7 @@ export default function LocationPage() {
     }
 
     return (
-        <>
+        <div>
             <h3>My Remaining Options</h3>
             <div className="location-cards">
             {remainingLocations.length > 0 && remainingLocations.map((location, idx) => (
@@ -34,7 +34,7 @@ export default function LocationPage() {
             </div>
             ))}
             </div>
-        </>
+        </div>
        
 
     );

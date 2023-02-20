@@ -1,6 +1,13 @@
 .time-left {
-    background-color: gray;
     color: white;
     margin: 0;
-    padding: 4%;
+}
+
+.time-left-banner {
+    position: fixed;
+    background-color: gray;
+    padding: 15px;
+    width: 100%;
+    top: 60px;
+    z-index: 1000;
 }
