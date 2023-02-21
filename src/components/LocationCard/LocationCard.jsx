@@ -22,7 +22,10 @@ const LocationCard = ({ location }) => {
     
     if (matches.length == 0) {
       // add to remainingOptions
+      var selectedLocations_last = selectedLocations[selectedLocations.length - 1]
+      selectedLocations = selectedLocations.slice(0, -1);
       selectedLocations.push(location);
+      selectedLocations.push(selectedLocations_last)
       selectedLocationsUpdated["users/user1/adventure/selectedLocations"] = selectedLocations;
       updateDatabase(selectedLocationsUpdated);
 
