@@ -8,7 +8,7 @@ export default function NavbarApp() {
         <div>
         <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" className="static-nav">
             <Container>
-                <Navbar.Brand href="/" data-cy="pageTitle"><img src="./public/images/logo_horiz.png" style={{width: '70px'}}></img></Navbar.Brand>
+                <Navbar.Brand href="/" data-cy="pageTitle"><img src="images/logo_horiz.png" style={{width: '70px'}}></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav
