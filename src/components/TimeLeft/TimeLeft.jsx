@@ -35,9 +35,9 @@ export default function TimeLeft() {
         return <h1>Loading</h1>
     } 
 
-    const startTime = data.users[user]["start time"]
-    const endTime = data.users[user]["end time"]
-    const freeTime = 5.5
+    const startTime = Date.parse(data.users[user]["start time"])
+    const endTime = Date.parse(data.users[user]["end time"])
+    const freeTime = Math.abs(startTime - endTime) / 36e5;
 
     const calculateTime = () => {
          // calculate remaining time
