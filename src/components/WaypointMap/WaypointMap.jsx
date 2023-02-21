@@ -26,21 +26,6 @@ const WaypointMap =  () => {
     return(
         
         <div class= "map div" style={{"height": "100%"}}>
-            <ProgressTimer
-  barRounded
-  buttonText=""
-  classes={{}}
-  fontSize={15}
-  color="#2f2d2d"
-  duration={60}
-  fontColor="#ffffff"
-  label="Time remaining
-"
-  onFinish={function noRefCheck(){}}
-  showDuration
-  started
-  variant="fill"
-/>
         {selectedLocations=== undefined || selectedLocations.length ==0 ? <div> No Locations added</div> : 
         <div style={{"height": "60em"}}>
             {selectedLocations.length ==1 ? 
