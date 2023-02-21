@@ -31,8 +31,19 @@ export default function AdventurePage() {
     return (
         <>
             <h3 style={{padding:"10px"}}>My Selected Options</h3>
+            <div style={{width: "auto"}}>
+            
+            <Button  
+                onClick={handleGoClick} 
+                variant="success" 
+                size="lg"
+                disabled={selectedLocations.length==0}
+                style={{width: "90%"}}
+            >
+                Go
+            </Button>
+            </div>
             <div className="adventure-cards">
-            <Button  onClick={handleGoClick} variant="success">Go</Button>
             {selectedLocations.length > 0 && selectedLocations.map((location) => (
                 <div key={location.id}>
                     <AdventureCard location={location} />
