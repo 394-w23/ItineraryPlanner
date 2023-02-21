@@ -17,7 +17,7 @@ const TimerComponent = () => (
   );
 export default function TimeLeft() {
     const [data, error] = useDbData();
-    const [selectedLocations, setSelectedLocations] = useState([])
+    const [selectedLocations, setSelectedLocations] = useState([]);
     const user = "user1"
 
     useEffect(() => {
@@ -31,11 +31,19 @@ export default function TimeLeft() {
         }
     }, [data])
 
+    if (!data) {
+        return <h1>Loading</h1>
+    } 
+
+    const startTime = data.users[user]["start time"]
+    const endTime = data.users[user]["end time"]
+    const freeTime = 5.5
+
     const calculateTime = () => {
          // calculate remaining time
-         let currRemainingTime = 0;
+         let currRemainingTime = freeTime;
          selectedLocations.forEach(location => {
-             if (location.suggestedTime) currRemainingTime += location.suggestedTime;
+             if (location.suggestedTime) currRemainingTime -= location.suggestedTime;
          })
 
          return currRemainingTime 
