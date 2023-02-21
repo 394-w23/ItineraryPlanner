@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Nav, Navbar, NavDropdown, Image, Button } from "react-bootstrap";
 import { useDbData } from "../../utilities/firebase";
 import AdventureCard from "../AdventureCard/AdventureCard";
-import WaypointMap from "../AdventurePage/WaypointMap";
+import WaypointMap from "../WaypointMap/WaypointMap";
 import '../AdventurePage/AdventurePage.css'
 import { useNavigate } from "react-router-dom";
 

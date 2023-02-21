@@ -3,7 +3,7 @@ import { useDbData } from "../../utilities/firebase";
 import ProgressTimer from 'react-progress-bar-timer';
 
 
-const WaypointMap=  () => {
+const WaypointMap =  () => {
     const [data, error] = useDbData();
     const [selectedLocations, setSelectedLocations] = useState([])
     const user = "user1"
