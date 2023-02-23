@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 import { getData, updateDatabase } from "../../utilities/firebase";
 
 const AdventureCard = ({ location }) => {
-  console.log("location", location)
+  // console.log("location", location)
 
   const removeLocation = async () => {
     const selectedLocationsUpdated = {}

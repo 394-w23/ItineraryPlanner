@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDbData } from "../../utilities/firebase";
 import ProgressTimer from 'react-progress-bar-timer';
 
-const apiKey = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";
+const apiKey = "AIzaSyCpuxnrQwGwxNCmBFUxCuuDsR9qc1heYB8";
 const baseUrl = "http://localhost:8080/https://maps.googleapis.com/maps/api/directions/json";
 
 
 const WaypointMap =  () => {
     const [data, error] = useDbData();
     const [selectedLocations, setSelectedLocations] = useState([])
+    const [waypoints, setWaypoints] = useState([])
     const user = "user1"
 
     useEffect(() => {
@@ -20,6 +21,22 @@ const WaypointMap =  () => {
             }
         }
     }, [data])
+
+    useEffect(() => {
+        const optimizeAndSetWaypoints = async () => {
+          if (selectedLocations.length > 1) {
+            const optimizedWaypoints = await optimizeWaypoints(
+              selectedLocations.slice(0, -1)
+            );
+            const formattedWaypoints = optimizedWaypoints
+              .map((str) => `'${str.address}'`)
+              .join(" | ");
+            setWaypoints(formattedWaypoints);
+          }
+        };
+        optimizeAndSetWaypoints();
+      }, [selectedLocations]);
+      
 
     if (!data) {
         return <p>Loading</p>
@@ -57,24 +74,29 @@ const WaypointMap =  () => {
         return totalTime;
     }
 
-    const optimizeWaypoints = (waypoints) => {
-        let optimizedWaypoints = [...waypoints];
-        let minTime = calculateTotalTime(waypoints);
-        for (let i = 1; i < waypoints.length - 2; i++) {
+    const optimizeWaypoints = async (waypoints) => {
+        return new Promise(async (resolve, reject) => {
+          let optimizedWaypoints = [...waypoints];
+          let minTime = await calculateTotalTime(waypoints);
+          for (let i = 1; i < waypoints.length - 2; i++) {
             for (let j = i + 1; j < waypoints.length - 1; j++) {
-                let tempWaypoints = [...waypoints];
-                tempWaypoints.splice(i, 1);
-                tempWaypoints.splice(j-1, 0, waypoints[i]);
-                let totalTime = calculateTotalTime(tempWaypoints);
-                if (totalTime < minTime) {
-                    optimizedWaypoints = tempWaypoints;
-                    minTime = totalTime;
-                    console.log(`New min time: ${minTime} seconds`)
-                }
+              let tempWaypoints = [...waypoints];
+              tempWaypoints.splice(i, 1);
+              tempWaypoints.splice(j - 1, 0, waypoints[i]);
+              let totalTime = await calculateTotalTime(tempWaypoints);
+              //   show the progress of the optimization
+              console.log("Optimizing...", (i / waypoints.length) * 100, "%" );
+              if (totalTime < minTime) {
+                optimizedWaypoints = tempWaypoints;
+                minTime = totalTime;
+              }
             }
-        }
-        return optimizedWaypoints;
-    }
+          }
+          resolve(optimizedWaypoints);
+        });
+      };
+      
+
     // Fisher-Yates shuffle algorithm
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -84,14 +106,12 @@ const WaypointMap =  () => {
         return array;
     }
 
-    const waypoints = optimizeWaypoints(selectedLocations.slice(0, -1)).map(str => `'${str.address}'`).join(' | ');
-
     return(
         
-        <div class= "map div" style={{"height": "100%"}}>
-        {selectedLocations=== undefined || selectedLocations.length ==0 ? <div> No Locations added</div> : 
+        <div className= "map div" style={{"height": "100%"}}>
+        {selectedLocations=== undefined || selectedLocations.length ===0 ? <div> No Locations added</div> : 
         <div style={{"height": "60em"}}>
-            {selectedLocations.length ==1 ? 
+            {selectedLocations.length ===1 ? 
                 <iframe
                         width = "100%"
                         height="100%"
