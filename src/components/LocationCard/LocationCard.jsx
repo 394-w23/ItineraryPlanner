@@ -43,12 +43,6 @@ const LocationCard = ({ location }) => {
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
         <Card.Text>Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr</Card.Text>
-        <iframe
-                width = "100%"
-                height="auto"
-                src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin="13 Rue du Mail, 75002 Paris, France"&destination=${location.address}&mode=walking`}
-                >
-            </iframe>
         <Button variant="primary" onClick={saveLocation}>Add to adventure</Button>
       </Card.Body>
     </Card>
