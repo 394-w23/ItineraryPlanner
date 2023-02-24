@@ -21,11 +21,22 @@ const WaypointMap =  () => {
     if (!data) {
         return <p>Loading</p>
     }
+
+    // Fisher-Yates shuffle algorithm
+    // eventually make this minimise time travelled 
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
     const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
     
     return(
         
-        <div class= "map div" style={{"height": "100%"}}>
+        <div className = "map div" style={{"height": "100%"}}>
         {selectedLocations=== undefined || selectedLocations.length ==0 ? <div> No Locations added</div> : 
         <div style={{"height": "60em"}}>
             {selectedLocations.length ==1 ? 
