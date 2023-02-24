@@ -51,7 +51,8 @@ export default function TimeLeft() {
     
     return (
         <div className="time-left-banner">
-        <h4 className="time-left">Based on your selections you have {calculateTime()} Hours left</h4>
+            <div className="start-adventure">Start building your adventure</div>
+            <div className="time-left">{calculateTime()} Hours left</div>
         </div>
     )
 }

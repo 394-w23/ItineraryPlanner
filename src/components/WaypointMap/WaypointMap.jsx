@@ -27,7 +27,7 @@ const WaypointMap =  () => {
         
         <div class= "map div" style={{"height": "100%"}}>
         {selectedLocations=== undefined || selectedLocations.length ==0 ? <div> No Locations added</div> : 
-        <div style={{"height": "60em"}}>
+        <div style={{"height": "10em"}}>
             {selectedLocations.length ==1 ? 
                 <iframe
                         width = "100%"

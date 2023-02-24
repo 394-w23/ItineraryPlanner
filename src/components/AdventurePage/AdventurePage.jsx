@@ -27,14 +27,11 @@ export default function AdventurePage() {
     if (!data) {
         return <p>Loading</p>
     }
-    const handleGoClick = () => {
-        navigate("/go");
-    }
     return (
         <>
             <WaypointMap selectedLocations={selectedLocations}/>
             <h3 style={{padding:"10px"}}>My Selected Options</h3>
-            <div style={{width: "auto"}}>
+            {/* <div style={{width: "auto"}}>
             
             <Button  
                 onClick={handleGoClick} 
@@ -45,7 +42,7 @@ export default function AdventurePage() {
             >
                 Go
             </Button>
-            </div>
+            </div> */}
             <div className="adventure-cards">
             {selectedLocations.length > 0 && selectedLocations.map((location) => (
                 <div key={location.id}>
