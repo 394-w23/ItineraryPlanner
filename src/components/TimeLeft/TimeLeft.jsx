@@ -7,7 +7,7 @@ const TimerComponent = () => (
     
 <ProgressTimer
   direction="left"
-  duration={60*60}
+  duration={60}
   label="3 hours left"
   onFinish={function noRefCheck(){}}
   rootRounded

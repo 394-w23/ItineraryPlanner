@@ -4,22 +4,16 @@ import ProgressTimer from 'react-progress-bar-timer';
 export default function GoPage() {
     return (
         <div>
-            <div className="main">
-                <ProgressTimer
-                    barRounded
-                    buttonText=""
-                    classes={{}}
-                    fontSize={15}
-                    color="#2f2d2d"
-                    duration={60}
-                    fontColor="#ffffff"
-                    label="Time remaining
-                    "
-                    onFinish={function noRefCheck(){}}
-                    showDuration
-                    started
-                    variant="fill"
-                />
+            <div className="main" style={{ paddingTop: `60px`}}>
+            <ProgressTimer
+  direction="right"
+  duration={100}
+  label="3 hours left"
+  onFinish={function noRefCheck(){}}
+  rootRounded
+  started={false}
+  variant="fill"
+ />
                 <WaypointMap />
             </div>
         </div>
