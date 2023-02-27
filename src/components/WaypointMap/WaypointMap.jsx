@@ -3,7 +3,7 @@ import { useDbData } from "../../utilities/firebase";
 import './WaypointMap.css'
 
 
-const WaypointMap =  () => {
+const WaypointMap = () => {
     const [data, error] = useDbData();
     const [selectedLocations, setSelectedLocations] = useState([])
     const user = "user1"
@@ -33,21 +33,21 @@ const WaypointMap =  () => {
     // }
     const waypoints = selectedLocations.slice(0, -1).map(str => `'${str.address}'`).join(' | ');
 
-    return(
+    return (
         <>
-        {selectedLocations.length > 0 && 
-        <div className = "map-banner">
-            <iframe
-                    width = "100%"
-                    height= "100%"
-                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin="13 Rue du Mail, 75002 Paris, France"&destination=${selectedLocations[selectedLocations.length-1].address}&waypoints=${waypoints}&mode=walking`}
-            >       
-            </iframe>
-        </div>
-        }
+            {selectedLocations.length > 0 &&
+                <div className="map-banner">
+                    <iframe
+                        width="100%"
+                        height="100%"
+                        src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin="13 Rue du Mail, 75002 Paris, France"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=10`}
+                    >
+                    </iframe>
+                </div>
+            }
         </>
     )
-    
+
 }
 
 
