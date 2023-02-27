@@ -2,6 +2,8 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getData, updateDatabase } from "../../utilities/firebase";
+import '../AdventureCard/AdventureCard.css'
+
 
 const AdventureCard = ({ location }) => {
   // console.log("location", location)
@@ -33,15 +35,29 @@ const AdventureCard = ({ location }) => {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '1rem' }}>
+    <>
+    { location["selected"] ? 
+    <Card className="selected" style={{ width: '18rem', margin: '1rem' }}>
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
         <Card.Text>Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr</Card.Text>
-        {!location["startOrEnd"] && location["selected"] && <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>}
-        {!location["startOrEnd"] && !location["selected"] && <Button variant="primary" onClick={saveLocation}>Add to adventure</Button>}
+        {!location["startOrEnd"] && <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>}
       </Card.Body>
     </Card>
+    :
+    <Card className="unselected" style={{ width: '18rem', margin: '1rem' }}>
+      <Card.Img variant="top" src={location.image} />
+      <Card.Body>
+        <Card.Title>{location.name}</Card.Title>
+        <Card.Text>Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr</Card.Text>
+        {!location["startOrEnd"] && <Button variant="primary" onClick={saveLocation}>Add to adventure</Button>}
+      </Card.Body>
+    </Card>
+    }
+
+    </>
+    
   )
 }
 
