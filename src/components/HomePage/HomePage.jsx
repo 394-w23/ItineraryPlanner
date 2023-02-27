@@ -1,5 +1,4 @@
 import AdventurePage from "../AdventurePage/AdventurePage"
-import LocationPage from "../LocationPage/LocationPage"
 import TimeLeft from "../TimeLeft/TimeLeft"
 import GoBar from "../GoBar/GoBar"
 import './HomePage.css'
@@ -12,7 +11,6 @@ export default function HomePage() {
             <WaypointMap/>
             <div className="main">
                 <AdventurePage />
-                <LocationPage city="Paris"/>
             </div>
             <GoBar/>
         </div>

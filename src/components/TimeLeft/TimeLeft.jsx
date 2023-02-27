@@ -15,19 +15,19 @@ const TimerComponent = () => (
   variant="fill"
  />
   );
+
 export default function TimeLeft() {
     const [data, error] = useDbData();
-    const [selectedLocations, setSelectedLocations] = useState([]);
+    const [locations, setLocations] = useState([])
     const user = "user1"
 
     useEffect(() => {
         if (data) {
-            if (data.users[user]["adventure"]["selectedLocations"]) {
-                setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]));
+            if (data.users[user]["adventure"]["locations"]) {
+                setLocations(Object.values(data.users[user]["adventure"]["locations"]));
             } else {
-                setSelectedLocations([]);
+                setLocations([]);
             }
-
         }
     }, [data])
 
@@ -42,8 +42,8 @@ export default function TimeLeft() {
     const calculateTime = () => {
          // calculate remaining time
          let currRemainingTime = freeTime;
-         selectedLocations.forEach(location => {
-             if (location.suggestedTime) currRemainingTime -= location.suggestedTime;
+         locations.forEach(location => {
+             if (location["selected"] && location.suggestedTime) currRemainingTime -= location.suggestedTime;
          })
 
          return currRemainingTime 

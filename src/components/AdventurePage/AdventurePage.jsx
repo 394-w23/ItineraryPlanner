@@ -6,15 +6,15 @@ import '../AdventurePage/AdventurePage.css'
 
 export default function AdventurePage() {
     const [data, error] = useDbData();
-    const [selectedLocations, setSelectedLocations] = useState([])
+    const [locations, setLocations] = useState([])
     const user = "user1"
 
     useEffect(() => {
         if (data) {
-            if (data.users[user]["adventure"]["selectedLocations"]) {
-                setSelectedLocations(Object.values(data.users[user]["adventure"]["selectedLocations"]));
+            if (data.users[user]["adventure"]["locations"]) {
+                setLocations(Object.values(data.users[user]["adventure"]["locations"]));
             } else {
-                setSelectedLocations([]);
+                setLocations([]);
             }
         }
     }, [data])
@@ -26,7 +26,7 @@ export default function AdventurePage() {
         <>
             <h3 style={{padding:"10px"}}>My Selected Options</h3>
             <div className="adventure-cards">
-            {selectedLocations.length > 0 && selectedLocations.map((location) => (
+            {locations.length > 0 && locations.map((location) => (
                 <div key={location.id}>
                     <AdventureCard location={location} />
                 </div>
