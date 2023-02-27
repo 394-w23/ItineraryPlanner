@@ -24,7 +24,6 @@ export default function AdventurePage() {
     }
     return (
         <>
-            <h3 style={{padding:"10px"}}>My Selected Options</h3>
             <div className="adventure-cards">
             {locations.length > 0 && locations.map((location) => (
                 <div key={location.id}>
