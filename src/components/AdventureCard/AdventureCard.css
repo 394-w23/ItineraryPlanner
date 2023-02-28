@@ -1,9 +1,14 @@
 .selected {
     background-color: green;
     color: white;
-}
-
-.unselected {
+    width: 18rem;
+    margin: 1rem auto;
+  }
+  
+  .unselected {
     background-color: black;
     color: white;
-}
+    width: 18rem;
+    margin: 1rem auto;
+  }
+  

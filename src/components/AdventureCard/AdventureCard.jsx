@@ -37,7 +37,7 @@ const AdventureCard = ({ location }) => {
   return (
     <>
     { location["selected"] ? 
-    <Card className="selected" style={{ width: '18rem', margin: '1rem' }}>
+    <Card className="selected">
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
@@ -46,7 +46,7 @@ const AdventureCard = ({ location }) => {
       </Card.Body>
     </Card>
     :
-    <Card className="unselected" style={{ width: '18rem', margin: '1rem' }}>
+    <Card className="unselected">
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
