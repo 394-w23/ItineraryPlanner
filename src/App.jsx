@@ -1,15 +1,18 @@
-import { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import NavbarApp from './components/Navbar/Navbar';
+import { Wrapper } from "@googlemaps/react-wrapper";
+import "./App.css";
+import NavbarApp from "./components/Navbar/Navbar";
 import Routes from "./Routes";
+
+const GOOGLE_MAPS_API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";
 
 const App = () => {
   return (
-    <div className="App" >
-      <NavbarApp />
-      <Routes />
-    </div>
+    <Wrapper apiKey={GOOGLE_MAPS_API_KEY}>
+      <div className="App">
+        <NavbarApp />
+        <Routes />
+      </div>
+    </Wrapper>
   );
 };
 
