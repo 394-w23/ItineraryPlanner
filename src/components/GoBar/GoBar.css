@@ -10,3 +10,9 @@
     background-color: white;
     border-color: white;
 }
+
+.start-button:hover {
+    color: #fff;
+    background-color: green;
+    border-color: green;
+}

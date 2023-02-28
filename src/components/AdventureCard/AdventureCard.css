@@ -1,20 +1,19 @@
-.selected {
-    background-color: green;
-    color: white;
-    width: auto;
-    margin-right: 0.5rem;
-    margin-left: 0.5rem;
-}
-
-.unselected {
+.card {
     background-color: black;
     color: white;
     width: auto;
     margin-right: 0.5rem;
-    margin-left: 0.5rem;
+    text-align: left;
 }
 
-.card-container {
+/* .unselected {
+    background-color: black;
+    color: white;
+    width: auto;
+    margin-right: 0.5rem;
+} */
+
+/* .card-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,15 +29,6 @@
     padding: 0.75rem;
 }
 
-.button-sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 4rem;
-    height: 25rem;
-}
-
 .button-sidebar button {
     margin: 0.5rem 0;
     width: 100%;
@@ -48,4 +38,23 @@
 .adventure-button {
     width: 4rem;
     padding: 0.25rem;
+} */
+
+.card-container {
+    display: flex;
+}
+
+.button-sidebar button {
+    margin-top: 10px;
+    height: calc(100% - 20px);
+}
+
+.adventure-button-plus {
+    background-color: black !important;
+    border-color: black !important;
+}
+
+.adventure-button-minus {
+    background-color: green !important;
+    border-color: green !important;
 }

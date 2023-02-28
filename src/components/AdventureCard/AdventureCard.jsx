@@ -47,19 +47,19 @@ const AdventureCard = ({ location }) => {
         {!location['startOrEnd'] && (
           <>
             {location['selected'] ? (
-              <Button className="adventure-button" variant="danger" onClick={removeLocation}>
+              <Button className="adventure-button-minus" onClick={removeLocation}>
                 <FontAwesomeIcon icon={faMinus} />
               </Button>
             ) : (
-              <Button className="adventure-button" variant="success" onClick={saveLocation}>
+              <Button className="adventure-button-plus" onClick={saveLocation}>
                 <FontAwesomeIcon icon={faPlus} />
               </Button>
             )}
           </>
         )}
       </div>
-      <Card className={location.selected ? 'selected' : 'unselected'}>
-        <Card.Img variant="top" src={location.image} />
+      <Card className="card">
+        <Card.Img variant="top" src={location.image} className="card-img"/>
         <Card.Body className="adventure-card-body">
           <Card.Title>{location.name}</Card.Title>
           <Card.Text>
