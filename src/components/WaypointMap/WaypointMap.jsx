@@ -1,7 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDbData } from "../../utilities/firebase";
-import ProgressTimer from "react-progress-bar-timer";
-import axios from "axios";
 
 const mapEmbedBaseUrl = "https://www.google.com/maps/embed/v1/directions";
 const API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";

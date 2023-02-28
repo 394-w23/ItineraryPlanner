@@ -2,34 +2,42 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getData, updateDatabase } from "../../utilities/firebase";
+import '../AdventureCard/AdventureCard.css'
+
 
 const AdventureCard = ({ location }) => {
   // console.log("location", location)
 
-  const removeLocation = async () => {
-    const selectedLocationsUpdated = {}
-    const remainingLocationsUpdated = {}
-    const selectedLocations = await getData("users/user1/adventure/selectedLocations");
-    let remainingLocations = await getData("users/user1/adventure/remainingLocations");
+  const saveLocation = async () => {
+    const locationsUpdated = {}
+    let locations = await getData("users/user1/adventure/locations");
     
-    if (remainingLocations == null) {
-      remainingLocations = [];
+    if (locations) {
+      var index = locations.map(function(location) { return location["name"]; }).indexOf(location["name"]);
+      locations[index]["selected"] = true;
+
+      locationsUpdated["users/user1/adventure/locations"] = locations;
+      updateDatabase(locationsUpdated);
     }
+  };
 
-    // add to remainingLocations
-    remainingLocations.push(location);
-    remainingLocationsUpdated["users/user1/adventure/remainingLocations"] = remainingLocations;
-    updateDatabase(remainingLocationsUpdated);
+  const removeLocation = async () => {
+    const locationsUpdated = {}
+    let locations = await getData("users/user1/adventure/locations");
+    
+    if (locations) {
+      var index = locations.map(function(location) { return location["name"]; }).indexOf(location["name"]);
+      locations[index]["selected"] = false;
 
-    // remove from remainingLocations
-    selectedLocationsUpdated["users/user1/adventure/selectedLocations"] = selectedLocations.filter(function (selectedLocation) {
-      return selectedLocation.name != location.name;
-    });
-    updateDatabase(selectedLocationsUpdated);
-  }
+      locationsUpdated["users/user1/adventure/locations"] = locations;
+      updateDatabase(locationsUpdated);
+    }
+  };
 
   return (
-    <Card style={{ width: '18rem', margin: '1rem' }}>
+    <>
+    { location["selected"] ? 
+    <Card className="selected">
       <Card.Img variant="top" src={location.image} />
       <Card.Body>
         <Card.Title>{location.name}</Card.Title>
@@ -37,6 +45,19 @@ const AdventureCard = ({ location }) => {
         {!location["startOrEnd"] && <Button variant="primary" onClick={removeLocation}>Remove from adventure</Button>}
       </Card.Body>
     </Card>
+    :
+    <Card className="unselected">
+      <Card.Img variant="top" src={location.image} />
+      <Card.Body>
+        <Card.Title>{location.name}</Card.Title>
+        <Card.Text>Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr</Card.Text>
+        {!location["startOrEnd"] && <Button variant="primary" onClick={saveLocation}>Add to adventure</Button>}
+      </Card.Body>
+    </Card>
+    }
+
+    </>
+    
   )
 }
 

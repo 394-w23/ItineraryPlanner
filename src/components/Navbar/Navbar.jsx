@@ -6,7 +6,7 @@ import './Navbar.css'
 export default function NavbarApp() {
     return (
         <div>
-        <Navbar collapseOnSelect bg="dark" variant="dark" expand="lg" className="static-nav">
+        <Navbar collapseOnSelect bg="light" variant="light" expand="lg" className="static-nav">
             <Container>
                 <Navbar.Brand href="/" data-cy="pageTitle"><img src="images/logo_horiz.png" style={{width: '70px'}}></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
