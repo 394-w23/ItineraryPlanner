@@ -16,7 +16,7 @@
 .time-left-banner {
     position: fixed;
     background-color: black;
-    padding: 10px;
+    height: 40px;
     width: 100%;
     top: 60px;
     z-index: 1000;

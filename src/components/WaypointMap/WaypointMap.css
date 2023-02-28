@@ -1,8 +1,7 @@
 .map-banner {
     position: fixed;
-    padding: 10px;
+    height: 100px;
     width: 100%;
-    top: 91px;
+    top: 100px;
     z-index: 1000;
-    height: 8em;
 }

@@ -8,7 +8,7 @@ export default function HomePage() {
     return (
         <div>
             <TimeLeft />
-            <WaypointMap/>
+            <WaypointMap page="home"/>
             <div className="main">
                 <AdventurePage />
             </div>

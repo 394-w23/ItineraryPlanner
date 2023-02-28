@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDbData } from "../../utilities/firebase";
+import './WaypointMap.css'
 
 const mapEmbedBaseUrl = "https://www.google.com/maps/embed/v1/directions";
 const API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";
 const mapRequestUrl = `${mapEmbedBaseUrl}?key=${API_KEY}`;
 const origin = "1 Rue Chevert, 7th arr., 75007 Paris, France";
 
-const WaypointMap = () => {
+const WaypointMap = ({page}) => {
   const [data, error] = useDbData();
   const [locations, setLocations] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
@@ -74,23 +75,42 @@ const WaypointMap = () => {
   }
 
   return (
-    <div className="map div" style={{ height: "100%" }}>
-      {selectedLocations === undefined || selectedLocations.length <= 1 ? (
-        <div> No Locations added</div>
+    <>
+    {
+      page == "home" ? (
+        <>
+          {selectedLocations.length > 0 &&
+            <div className="map-banner">
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin="13 Rue du Mail, 75002 Paris, France"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=10`}
+                >
+                </iframe>
+            </div>
+          }
+        </>
       ) : (
-        <div style={{ height: "60em" }}>
-          <iframe
-            width="100%"
-            height="100%"
-            src={`${mapRequestUrl}&origin="${
-              selectedLocations[1].address
-            }"&destination="${
-              selectedLocations[selectedLocations.length - 1].address
-            }"&mode=walking${waypoints && `&waypoints=${waypoints}`}`}
-          ></iframe>
+        <div className="map div" style={{ height: "100%" }}>
+          {selectedLocations === undefined || selectedLocations.length <= 1 ? (
+            <div> No Locations added</div>
+          ) : (
+            <div style={{ height: "60em" }}>
+              <iframe
+                width="100%"
+                height="100%"
+                src={`${mapRequestUrl}&origin="${
+                  selectedLocations[1].address
+                }"&destination="${
+                  selectedLocations[selectedLocations.length - 1].address
+                }"&mode=walking${waypoints && `&waypoints=${waypoints}`}`}
+              ></iframe>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      )
+    }
+    </>
   );
 };
 

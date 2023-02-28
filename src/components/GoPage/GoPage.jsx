@@ -20,7 +20,7 @@ export default function GoPage() {
   fontColor="#ffffff"
   color="#000000"
  />
-                <WaypointMap />
+                <WaypointMap page="go"/>
             </div>
         </div>
     )
