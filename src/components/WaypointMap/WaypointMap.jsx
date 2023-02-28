@@ -8,26 +8,29 @@ const origin = "1 Rue Chevert, 7th arr., 75007 Paris, France";
 
 const WaypointMap = () => {
   const [data, error] = useDbData();
+  const [locations, setLocations] = useState([]);
   const [selectedLocations, setSelectedLocations] = useState([]);
   const [waypoints, setWaypoints] = useState("");
   const user = "user1";
 
   useEffect(() => {
     if (data) {
-      if (data.users[user]["adventure"]["selectedLocations"]) {
-        setSelectedLocations(
-          Object.values(data.users[user]["adventure"]["selectedLocations"]).map(
-            (location) => ({
-              ...location,
-              address: location.address.trim(),
-            })
-          )
-        );
-      } else {
-        setSelectedLocations([]);
-      }
+        if (data.users[user]["adventure"]["locations"]) {
+            setLocations(Object.values(data.users[user]["adventure"]["locations"]));
+        } else {
+            setLocations([]);
+        }
     }
-  }, [data]);
+  }, [data])
+
+  useEffect(() => {
+    if (locations) {
+      const newArray = locations.filter(function (location) {
+        return location["selected"] == true;
+      });
+      setSelectedLocations(newArray);
+    }
+  }, [locations])
 
   useEffect(() => {
     if (selectedLocations.length <= 1) {
