@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import './GoBar.css'
 
 
 export default function GoBar() {
+    const navigate = useNavigate();
+
     const handleGoClick = () => {
         navigate("/go");
     }
