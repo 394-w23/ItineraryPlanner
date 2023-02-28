@@ -1,14 +1,25 @@
+.selected {
+    background-color: green;
+    color: white;
+    width: auto;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.unselected {
+    background-color: black;
+    color: white;
+    width: auto;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
 .card-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
     width: 100%;
-}
-
-.adventure-card {
-    width: 16rem;
-    margin-right: 0.5rem;
 }
 
 .adventure-card-body {
@@ -18,7 +29,6 @@
     align-items: flex-start;
     padding: 0.75rem;
 }
-
 
 .button-sidebar {
     display: flex;

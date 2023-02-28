@@ -58,7 +58,7 @@ const AdventureCard = ({ location }) => {
           </>
         )}
       </div>
-      <Card className="adventure-card">
+      <Card className={location.selected ? 'selected' : 'unselected'}>
         <Card.Img variant="top" src={location.image} />
         <Card.Body className="adventure-card-body">
           <Card.Title>{location.name}</Card.Title>
