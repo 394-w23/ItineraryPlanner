@@ -4,6 +4,7 @@
     width: auto;
     margin-right: 0.5rem;
     text-align: left;
+    width: 100%
 }
 
 /* .unselected {
@@ -45,8 +46,8 @@
 }
 
 .button-sidebar button {
-    margin-top: 10px;
-    height: calc(100% - 20px);
+    margin-top: 3px;
+    height: calc(100% - 6px);
 }
 
 .adventure-button-plus {
@@ -57,4 +58,9 @@
 .adventure-button-minus {
     background-color: green !important;
     border-color: green !important;
+}
+
+.card-img {
+    height: 15vw;
+    object-fit: cover;
 }
