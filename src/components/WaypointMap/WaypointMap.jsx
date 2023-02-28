@@ -4,7 +4,7 @@ import { useDbData } from "../../utilities/firebase";
 const mapEmbedBaseUrl = "https://www.google.com/maps/embed/v1/directions";
 const API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";
 const mapRequestUrl = `${mapEmbedBaseUrl}?key=${API_KEY}`;
-const origin = "13 Rue du Mail, 75002 Paris, France";
+const origin = "1 Rue Chevert, 7th arr., 75007 Paris, France";
 
 const WaypointMap = () => {
   const [data, error] = useDbData();
@@ -16,7 +16,12 @@ const WaypointMap = () => {
     if (data) {
       if (data.users[user]["adventure"]["selectedLocations"]) {
         setSelectedLocations(
-          Object.values(data.users[user]["adventure"]["selectedLocations"])
+          Object.values(data.users[user]["adventure"]["selectedLocations"]).map(
+            (location) => ({
+              ...location,
+              address: location.address.trim(),
+            })
+          )
         );
       } else {
         setSelectedLocations([]);
@@ -30,11 +35,11 @@ const WaypointMap = () => {
       return;
     }
 
-    const destination =
-      selectedLocations[selectedLocations.length - 1].address.trim();
+    const origin = selectedLocations[0].address;
+    const destination = selectedLocations[selectedLocations.length - 1].address;
 
-    const waypoints = selectedLocations.slice(0, -1).map((str) => ({
-      location: str.address.trim(),
+    const waypoints = selectedLocations.slice(1, -1).map((location) => ({
+      location: location.address,
       stopover: true,
     }));
 
@@ -65,18 +70,18 @@ const WaypointMap = () => {
     return <p>Loading</p>;
   }
 
-  console.log(waypoints);
-
   return (
     <div className="map div" style={{ height: "100%" }}>
-      {selectedLocations === undefined || selectedLocations.length === 0 ? (
+      {selectedLocations === undefined || selectedLocations.length <= 1 ? (
         <div> No Locations added</div>
       ) : (
         <div style={{ height: "60em" }}>
           <iframe
             width="100%"
             height="100%"
-            src={`${mapRequestUrl}&origin="${origin}"&destination="${
+            src={`${mapRequestUrl}&origin="${
+              selectedLocations[1].address
+            }"&destination="${
               selectedLocations[selectedLocations.length - 1].address
             }"&mode=walking${waypoints && `&waypoints=${waypoints}`}`}
           ></iframe>
