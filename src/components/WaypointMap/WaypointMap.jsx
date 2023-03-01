@@ -84,7 +84,7 @@ const WaypointMap = ({page}) => {
                 <iframe
                     width="100%"
                     height="100%"
-                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin="13 Rue du Mail, 75002 Paris, France"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=10`}
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=10`}
                 >
                 </iframe>
             </div>
