@@ -61,7 +61,7 @@ const AdventureCard = ({ location }) => {
       <Card className="card">
         <Card.Img variant="top" src={location.image} className="card-img"/>
         <Card.Body className="adventure-card-body">
-          <Card.Title>{location.name}</Card.Title>
+          <Card.Title data-testid="adventure-card-title" >{location.name}</Card.Title>
           <Card.Text>
             Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr
           </Card.Text>

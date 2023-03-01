@@ -26,8 +26,8 @@ export default function AdventurePage() {
         <>
             <div className="adventure-cards">
             {locations.length > 0 && locations.map((location) => (
-                <div key={location.id}>
-                    <AdventureCard location={location} className="card"/>
+                <div>
+                    <AdventureCard key={location.id} location={location} className="card"/>
                 </div>
             ))}
             </div>
