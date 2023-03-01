@@ -10,3 +10,25 @@ describe('Home page tests', () => {
   });
 
 });
+
+describe('mock user', () => {
+  beforeEach(() => {
+    useAuthState.mockReturnValue([user]);
+    useProfile.mockReturnValueOnce([profile]);
+    render(<App />);
+  });
+
+  it('load home page', async () => {
+    const homeButton = screen.getByText('Home');
+    fireEvent.click(homeButton);
+    expect(await screen.getByText('page does not exist')).toBeDefined();
+  });
+});
+
+describe('without logged in user', () => {
+  beforeEach(() => {
+    useAuthState.mockReturnValue([null]);
+    useProfile.mockReturnValue([null]);
+    render(<App />);
+  });
+});
