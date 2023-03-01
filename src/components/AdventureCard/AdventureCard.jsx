@@ -59,10 +59,12 @@ const AdventureCard = ({ location }) => {
         )}
       </div>
       <Card className="card">
-        <Card.Img variant="top" src={location.image} className="card-img"/>
-        <Card.Body className="adventure-card-body">
-          <Card.Title>{location.name}</Card.Title>
-          <Card.Text>
+        <Card.Img variant="top" src={location.image} className="card-img" style={{height: '3rem'}}/>
+        <Card.Body className="card-body">
+          <Card.Title data-testid="adventure-card-title" className="card-title">
+            <strong>{location.name}</strong>
+          </Card.Title>
+          <Card.Text className="card-text">
             Suggested Time: {location.suggestedTime ? location.suggestedTime : 0} Hr
           </Card.Text>
         </Card.Body>

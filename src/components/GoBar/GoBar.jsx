@@ -19,7 +19,7 @@ export default function GoBar() {
                 style={{width: "100%", height: "50px"}}
                 className="start-button"
             >
-                Start My Adventure
+                START MY ADVENTURE
             </Button>
         </div>
     )
