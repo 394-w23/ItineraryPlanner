@@ -5,7 +5,8 @@ import './WaypointMap.css'
 const mapEmbedBaseUrl = "https://www.google.com/maps/embed/v1/directions";
 const API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";
 const mapRequestUrl = `${mapEmbedBaseUrl}?key=${API_KEY}`;
-const origin = "1 Rue Chevert, 7th arr., 75007 Paris, France";
+const origin = "11 Rue Chevert, 7th arr., 75007 Paris, France";
+const origin_coordinates= "48.85563451450195, 2.308913150138946"
 
 const WaypointMap = ({page}) => {
   const [data, error] = useDbData();
@@ -108,7 +109,7 @@ const WaypointMap = ({page}) => {
                 <iframe
                     width="100%"
                     height="100%"
-                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=10`}
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=17&center=${origin_coordinates}`}
                 >
                 </iframe>
             </div>
@@ -117,7 +118,7 @@ const WaypointMap = ({page}) => {
                 <iframe
                     width="100%"
                     height="100%"
-                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&mode=walking&zoom=10`}
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&mode=walking&zoom=17&center=${origin_coordinates}`}
                 >
                 </iframe>
             </div>
