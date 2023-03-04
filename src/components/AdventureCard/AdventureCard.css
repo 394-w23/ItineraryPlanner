@@ -1,5 +1,5 @@
 .card {
-    background-color: black;
+    background-color: #262262;
     color: white;
     width: auto;
     margin-right: 0.5rem;
@@ -73,8 +73,8 @@
 }
 
 .adventure-button-plus {
-    background-color: black !important;
-    border-color: black !important;
+    background-color: gray !important;
+    border-color: gray !important;
     border-radius: 0;
 }
 

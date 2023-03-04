@@ -38,7 +38,7 @@ export default function GoPage() {
     }
 
     let timeLeft = calculateTime();
-    let timeToHours = (timeLeft) + " hours left";
+    let timeToHours = (timeLeft) + " HOURS LEFT";
 
     return (
         <div>
@@ -51,9 +51,9 @@ export default function GoPage() {
                     onFinish={function noRefCheck(){}}
                     started={false}
                     variant="empty"
-                    fontSize={"10px"}
+                    fontSize={"6px"}
                     fontColor="#ffffff"
-                    color="#000000"
+                    color="#262262"
                     />
                 <WaypointMap page="go"/>
             </div>
