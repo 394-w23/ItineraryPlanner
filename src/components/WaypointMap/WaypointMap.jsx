@@ -76,10 +76,12 @@ const WaypointMap = ({page}) => {
 
   return (
     <>
+    {selectedLocations.length > 0 &&
+    <>
     {
       page == "home" ? (
         <>
-          {selectedLocations.length > 0 &&
+          {waypoints.length > 0 ?
             <div className="map-banner">
                 <iframe
                     width="100%"
@@ -88,28 +90,42 @@ const WaypointMap = ({page}) => {
                 >
                 </iframe>
             </div>
+            :
+            <div className="map-banner">
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&mode=walking&zoom=10`}
+                >
+                </iframe>
+            </div>
           }
         </>
       ) : (
         <div className="map div" style={{ height: "100%" }}>
-          {selectedLocations === undefined || selectedLocations.length <= 1 ? (
-            <div> No Locations added</div>
-          ) : (
+            {waypoints.length > 0 ?
             <div style={{ height: "60em" }}>
-              <iframe
-                width="100%"
-                height="100%"
-                src={`${mapRequestUrl}&origin="${
-                  selectedLocations[1].address
-                }"&destination="${
-                  selectedLocations[selectedLocations.length - 1].address
-                }"&mode=walking${waypoints && `&waypoints=${waypoints}`}`}
-              ></iframe>
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&waypoints=${waypoints}&mode=walking&zoom=10`}
+                >
+                </iframe>
             </div>
-          )}
+            :
+            <div style={{ height: "60em" }}>
+                <iframe
+                    width="100%"
+                    height="100%"
+                    src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA&origin=${selectedLocations[0].address}"&destination=${selectedLocations[selectedLocations.length - 1].address}&mode=walking&zoom=10`}
+                >
+                </iframe>
+            </div>
+          }
         </div>
       )
     }
+    </>}
     </>
   );
 };
