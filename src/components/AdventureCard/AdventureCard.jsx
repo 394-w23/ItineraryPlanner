@@ -14,8 +14,8 @@ const AdventureCard = ({ location }) => {
   // Subscribe to remaining time
   remainingTimeService.getRemainingTime().subscribe(t => {
     setRemainingTime(t.value)
-
   })
+  
   const saveLocation = async () => {
     const locationsUpdated = {};
     let locations = await getData('users/user1/adventure/locations');
@@ -31,7 +31,7 @@ const AdventureCard = ({ location }) => {
       const selectedLocation = locations[index]
       console.log(remainingTime)
       if (remainingTime - selectedLocation.suggestedTime <= 0) {
-        return toast.error("Please enter in the Image URI");;
+        return toast.error("You don't have enough time for this!");;
       }
 
       locations[index]['selected'] = true;

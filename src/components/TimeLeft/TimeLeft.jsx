@@ -27,43 +27,46 @@ export const remainingTimeService = {
 
 export default function TimeLeft() {
     const [data, error] = useDbData();
-    const [locations, setLocations] = useState([])
+    const [remainingTime, setRemainingTime] = useState()
     const user = "user1"
 
     useEffect(() => {
         if (data) {
+            let locations_ = []
             if (data.users[user]["adventure"]["locations"]) {
-                setLocations(Object.values(data.users[user]["adventure"]["locations"]));
-            } else {
-                setLocations([]);
+                locations_ = data.users[user]["adventure"]["locations"];
             }
+
+            setTime(data, locations_);
         }
     }, [data])
+
+    useEffect(() => {
+        remainingTimeService.setRemainingTime(remainingTime)
+    }, [remainingTime])
 
     if (!data) {
         return <h1>Loading</h1>
     } 
 
-    const startTime = Date.parse(data.users[user]["start time"])
-    const endTime = Date.parse(data.users[user]["end time"])
-    const freeTime = Math.abs(startTime - endTime) / 36e5;
-    remainingTimeService.setRemainingTime(freeTime);
+    const setTime = (data, locations) => {
+        const startTime = Date.parse(data.users[user]["start time"])
+        const endTime = Date.parse(data.users[user]["end time"])
+        const freeTime = Math.abs(startTime - endTime) / 36e5;
 
-    const calculateTime = () => {
          // calculate remaining time
          let currRemainingTime = freeTime;
          locations.forEach(location => {
              if (location["selected"] && location.suggestedTime) currRemainingTime -= location.suggestedTime;
          })
 
-         remainingTimeService.setRemainingTime(currRemainingTime)
-         return currRemainingTime 
+         setRemainingTime(currRemainingTime)
     }
     
     return (
         <div className="time-left-banner">
             <div className="start-adventure">Start building your adventure.</div>
-            <div className="time-left">{calculateTime()} Hours Left</div>
+            <div className="time-left">{remainingTime} Hours Left</div>
         </div>
     )
 }
