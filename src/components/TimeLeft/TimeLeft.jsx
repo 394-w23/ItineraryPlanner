@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDbData } from "../../utilities/firebase";
+import { Subject } from 'rxjs';
 import './TimeLeft.css'
 import ProgressTimer from 'react-progress-bar-timer';
 
@@ -15,6 +16,14 @@ const TimerComponent = () => (
   variant="fill"
  />
   );
+
+// 
+const subject = new Subject()
+export const remainingTimeService = {
+    setRemainingTime: t => subject.next({ value: t }),
+    clearRemainingTime: () => subject.next(),
+    getRemainingTime: () => subject.asObservable()
+}
 
 export default function TimeLeft() {
     const [data, error] = useDbData();
@@ -38,6 +47,7 @@ export default function TimeLeft() {
     const startTime = Date.parse(data.users[user]["start time"])
     const endTime = Date.parse(data.users[user]["end time"])
     const freeTime = Math.abs(startTime - endTime) / 36e5;
+    remainingTimeService.setRemainingTime(freeTime);
 
     const calculateTime = () => {
          // calculate remaining time
@@ -46,6 +56,7 @@ export default function TimeLeft() {
              if (location["selected"] && location.suggestedTime) currRemainingTime -= location.suggestedTime;
          })
 
+         remainingTimeService.setRemainingTime(currRemainingTime)
          return currRemainingTime 
     }
     

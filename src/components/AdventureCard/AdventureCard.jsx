@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getData, updateDatabase } from '../../utilities/firebase';
 import './AdventureCard.css';
+import { toast } from "react-toastify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { remainingTimeService } from '../TimeLeft/TimeLeft';
 
 const AdventureCard = ({ location }) => {
+  const [remainingTime, setRemainingTime] = useState()
+
+  // Subscribe to remaining time
+  remainingTimeService.getRemainingTime().subscribe(t => {
+    setRemainingTime(t.value)
+
+  })
   const saveLocation = async () => {
     const locationsUpdated = {};
     let locations = await getData('users/user1/adventure/locations');
@@ -17,6 +26,14 @@ const AdventureCard = ({ location }) => {
           return location['name'];
         })
         .indexOf(location['name']);
+        
+      // Toast notification if adding location results in remaining time < 0
+      const selectedLocation = locations[index]
+      console.log(remainingTime)
+      if (remainingTime - selectedLocation.suggestedTime <= 0) {
+        return toast.error("Please enter in the Image URI");;
+      }
+
       locations[index]['selected'] = true;
 
       locationsUpdated['users/user1/adventure/locations'] = locations;
