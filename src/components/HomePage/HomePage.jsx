@@ -6,13 +6,15 @@ import WaypointMap from "../WaypointMap/WaypointMap";
 
 export default function HomePage() {
     return (
-        <div>
-            <TimeLeft />
-            <WaypointMap page="home"/>
-            <div className="main">
-                <AdventurePage />
-            </div>
-            <GoBar/>
-        </div>
+        <>
+      <TimeLeft />
+      <div style={{pointerEvents:"none"}}>
+        <WaypointMap page="home"/>
+      </div>
+      <div className="main">
+        <AdventurePage />
+      </div>
+      <GoBar/>
+        </>
     )
 }
