@@ -83,7 +83,8 @@ const AdventureCard = ({ location }) => {
           </Card.Title>
           <Card.Text className="card-text">
             {location.suggestedTime ? 'Suggested Time: ' + location.suggestedTime + ' Hr' : 
-            location.arrivalTime ? 'Arrival Time: ' + location.arrivalTime : ""}
+            location.arrivalTime ? 'Final Destination, Arrive by ' + location.arrivalTime : 
+            location.start ? 'Origin': ""}
           </Card.Text>
         </Card.Body>
       </Card>

@@ -3,6 +3,7 @@ import WaypointMap from "../WaypointMap/WaypointMap"
 import ProgressTimer from 'react-progress-bar-timer';
 import './GoPage.css'
 import { useDbData } from "../../utilities/firebase";
+import TimeLeftGoPage from "../TimeLeftGoPage/TimeLeftGoPage";
 
 export default function GoPage() {
     const [data, error] = useDbData();
@@ -42,19 +43,13 @@ export default function GoPage() {
 
     return (
         <div>
-            <div style={{ paddingTop: `60px`}}>
-                <ProgressTimer
-                    direction="right"
-                    duration={(freeTime) * 3600}
-                    label={timeToHours}
-                    onFinish={function noRefCheck(){}}
-                    started={false}
-                    variant="empty"
-                    fontSize={"10px"}
-                    fontColor="#ffffff"
-                    color="#262262"
-                    />
-                <WaypointMap page="go"/>
+            <div style={{ paddingTop: `40px`}}>
+                <div className="progress-timer">
+                    <TimeLeftGoPage/>
+                </div>
+                <div style={{ marginTop: `70px`}}>
+                    <WaypointMap page="go"/>
+                </div>
             </div>
         </div>
         )

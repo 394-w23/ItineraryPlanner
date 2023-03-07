@@ -3,6 +3,7 @@
     margin: 0;
     font-size: 14px;
     float: left;
+    font-weight: bold;
 }
 
 .time-left {
@@ -15,15 +16,8 @@
 
 .time-left-banner {
     position: fixed;
-    background-color: black;
-    padding: 10px;
-    width: 100%;
-    top: 60px;
-    z-index: 1000;
-}
-
-.progress-timer {
-    position: fixed;
+    background-color: #262262 !important;
+    height: 40px;
     width: 100%;
     top: 60px;
     z-index: 1000;
