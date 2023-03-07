@@ -20,7 +20,7 @@
     },
     {
       "target": "demodev",
-      "public": "dist_dev",
+      "public": "dist",
       "ignore": [
         "firebase.json",
         "**/.*",
