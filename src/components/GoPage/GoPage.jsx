@@ -38,20 +38,19 @@ export default function GoPage() {
     }
 
     let timeLeft = calculateTime();
-    let timeToHours = (timeLeft) + " HOURS LEFT";
+    let timeToHours = (freeTime) + " HOURS LEFT";
 
     return (
         <div>
             <div style={{ paddingTop: `60px`}}>
                 <ProgressTimer
-                
                     direction="right"
-                    duration={timeLeft * 3600}
+                    duration={(freeTime) * 3600}
                     label={timeToHours}
                     onFinish={function noRefCheck(){}}
                     started={false}
                     variant="empty"
-                    fontSize={"6px"}
+                    fontSize={"10px"}
                     fontColor="#ffffff"
                     color="#262262"
                     />
