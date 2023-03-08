@@ -28,9 +28,12 @@ export default function TimeLeftGoPage() {
   const [duration, setDuration] = useState(0);
 
   const formattedDuration = useMemo(() => {
-    const seconds = Math.floor((duration / 1000) % 60);
-    const minutes = Math.floor((duration / (1000 * 60)) % 60);
-    const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+    var seconds = Math.floor((duration / 1000) % 60);
+    var minutes = Math.floor((duration / (1000 * 60)) % 60);
+    var hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+    seconds = ("0" + seconds).slice(-2)
+    minutes = ("0" + minutes).slice(-2)
+    hours = ("0" + hours).slice(-2)
     return `${hours}:${minutes}:${seconds}`;
   }, [duration]);
 
