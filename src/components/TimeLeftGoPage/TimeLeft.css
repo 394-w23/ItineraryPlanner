@@ -6,6 +6,14 @@
     font-weight: bold;
 }
 
+.time-duration {
+    color: white;
+    margin: 0;
+    font-size: 14px;
+    float: right;
+    font-weight: normal;
+}
+
 .time-left {
     color: white;
     margin: 0;
