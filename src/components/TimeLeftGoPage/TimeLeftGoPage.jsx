@@ -49,7 +49,7 @@ export default function TimeLeftGoPage() {
 
   return (
     <div className="time-left-banner">
-      <div className="time-left">Adventure Progress <p className="time-duration"> : { formattedDuration}</p> </div>
+      <div className="time-left">Time to explore <p className="time-duration"> : { formattedDuration}</p> </div>
     </div>
   );
 }
