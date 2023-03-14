@@ -4,7 +4,10 @@ The following repository is a React and Firebase application called Squirrel, a 
 
 ## Built with
 
-* [![React][React.js]][React-url]
+* React
+* Firebase
+* Bootstrap
+* Google Maps API
 
 ## Setting up React and Firebase
 
