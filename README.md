@@ -10,7 +10,7 @@ The following repository is a React and Firebase application called Squirrel, a 
 
 ## Setting up React and Firebase
 
-### Prerequisite
+### Prerequisites
 This React project requires Node.js and Node Package Manager (npm) to install dependencies and run/build the app. To install Node.js, [visit this site](https://nodejs.org/en/download/) and install the appropriate software for your machine. To install npm, run the following command:
 ```
 curl -qL https://www.npmjs.com/install.sh | sh
@@ -20,6 +20,11 @@ Then, to verify that both Node.js and npm are installed, run the following comma
 node -v
 npm -v
 ```
+Next, to set up Firebase, [create a Firebase account](https://firebase.google.com/). Then, run
+```
+firebase login
+```
+to connect your new Firebase account to the terminal.
 
 ### Installation
 
