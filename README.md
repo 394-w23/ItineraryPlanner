@@ -20,7 +20,7 @@ Then, to verify that both Node.js and npm are installed, run the following comma
 node -v
 npm -v
 ```
-Next, to set up Firebase, [create a Firebase account](https://firebase.google.com/). Then, run
+Next, to set up Firebase, [create a Firebase account](https://firebase.google.com/). You'll also need to contact one of the original developers of this project (contact info is below) to get access to this project's Firebase project. This will give you access to the database and will allow you to deploy to the actively running online site. Then, run
 ```
 firebase login
 ```
@@ -28,11 +28,15 @@ to connect your new Firebase account to the terminal.
 
 ### Installation
 
-First, create a new Firebase app using the [online Firebase portal](https://firebase.google.com/). Then, clone this repository by running
+Clone this repository by running
 ```
 git clone https://github.com/394-w23/ItineraryPlanner.git
 ```
-Then, connect your new Firebase project to this repository [using this tutorial](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425). Ensure that you set up both the realtime database and hosting.
+Then, run
+```
+firebase init
+```
+to initialize Firebase within this repository.
 
 ## Known bugs in current application
 
