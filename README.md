@@ -32,11 +32,13 @@ Clone this repository by running
 ```
 git clone https://github.com/394-w23/ItineraryPlanner.git
 ```
-Then, you'll need create a new one using the [Firebase online portal](https://firebase.google.com/). Make sure to copy the config variables and add them to src/utilities/firebase.js where the comment to add config variables is located. Then, follow [these instructions](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425) to set up hosting and [these instructions](https://courses.cs.northwestern.edu/394/guides/react-examples.php#add-database) to set up the realtime database. After setting up the realtime database, import the json found in data/data.json within the realtime database section of your project's portal. Finally, run
+Then, you'll need create a new one using the [Firebase online portal](https://firebase.google.com/). Make sure to copy the config variables and add them to src/utilities/firebase.js where the comment to add config variables is located. Then, follow [these instructions](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425) to set up hosting and [these instructions](https://courses.cs.northwestern.edu/394/guides/react-examples.php#add-database) to set up the realtime database. After setting up the realtime database, import the json found in data/data.json within the realtime database section of your project's portal. Then, run
 ```
 npm i
 ```
-to intsall all the dependencies that are required for the app to run locally, including react-bootstrap.
+to intsall all the dependencies that are required for the app to run locally, including react-bootstrap.  
+
+Finally, follows [these instructions](https://developers.google.com/maps/documentation/javascript/get-api-key) to get an Google Maps API key. Replace your API key with the deactivated one in src/components/WaypointMap/WaypointMap.jsx.
 
 ### Run
 To run the app locally, run
