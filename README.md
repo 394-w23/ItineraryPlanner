@@ -36,7 +36,26 @@ Then, run
 ```
 firebase init
 ```
-to initialize Firebase within this repository.
+to initialize Firebase within this repository. Finally, run
+```
+npm i
+```
+to intsall all the dependencies that are required for the app to run locally, including react-bootstrap.
+
+### Run
+To run the app locally, run
+```
+npm start
+```
+To run unit tests, run
+```
+npm run test
+```
+Finally, to deploy to the online site, run
+```
+npm run build
+firebase deploy
+```
 
 ## Known bugs in current application
 
