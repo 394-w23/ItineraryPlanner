@@ -28,6 +28,12 @@ to connect your new Firebase account to the terminal.
 
 ### Installation
 
+First, create a new Firebase app using the [online Firebase portal](https://firebase.google.com/). Then, clone this repository by running
+```
+git clone https://github.com/394-w23/ItineraryPlanner.git
+```
+Then, connect your new Firebase project to this repository [using this tutorial](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425). Ensure that you set up both the realtime database and hosting.
+
 ## Known bugs in current application
 
 ## Contact info
