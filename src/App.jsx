@@ -12,7 +12,7 @@ const App = () => {
     <Wrapper apiKey={GOOGLE_MAPS_API_KEY}>
       <div className="App">
         <NavbarApp />
-        <ToastContainer autoClose={1000} closeButton={false}/>
+        <ToastContainer autoClose={1500} closeButton={false}/>
         <Routes />
       </div>
     </Wrapper>

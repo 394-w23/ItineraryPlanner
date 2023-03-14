@@ -64,11 +64,11 @@ const AdventureCard = ({ location }) => {
         {!location['startOrEnd'] && (
           <>
             {location['selected'] ? (
-              <Button className="adventure-button-minus" onClick={removeLocation}>
+              <Button className="adventure-button-minus" data-testid="adventure-button" onClick={removeLocation}>
                 <FontAwesomeIcon icon={faMinus} />
               </Button>
             ) : (
-              <Button className="adventure-button-plus" onClick={saveLocation}>
+              <Button className="adventure-button-plus" data-testid="adventure-button" onClick={saveLocation}>
                 <FontAwesomeIcon icon={faPlus} />
               </Button>
             )}
@@ -83,7 +83,8 @@ const AdventureCard = ({ location }) => {
           </Card.Title>
           <Card.Text className="card-text">
             {location.suggestedTime ? 'Suggested Time: ' + location.suggestedTime + ' Hr' : 
-            location.arrivalTime ? 'Arrival Time: ' + location.arrivalTime : ""}
+            location.arrivalTime ? 'Final Destination, Arrive by ' + location.arrivalTime : 
+            location.start ? 'Origin': ""}
           </Card.Text>
         </Card.Body>
       </Card>
