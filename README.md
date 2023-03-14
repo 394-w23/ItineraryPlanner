@@ -54,6 +54,7 @@ firebase deploy
 ```
 
 ## Known bugs in current application
+No known bugs in the current application.
 
 ## Contact info
 * Lucy Beck - lucybeck2024@u.northwestern.edu
