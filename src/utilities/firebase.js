@@ -5,15 +5,7 @@ import { getDatabase, onValue, ref, update, get } from 'firebase/database';
 
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyBU1MIRL6sHxWARRrkEqa9g0byTZp3SAEg",
-  authDomain: "itineraryplanner-67b24.firebaseapp.com",
-  databaseURL: "https://itineraryplanner-67b24-default-rtdb.firebaseio.com",
-  projectId: "itineraryplanner-67b24",
-  storageBucket: "itineraryplanner-67b24.appspot.com",
-  messagingSenderId: "111289480330",
-  appId: "1:111289480330:web:7c6c314f5fe82d32fe6973"
-};
+// TODO: put firebase config here
 
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
