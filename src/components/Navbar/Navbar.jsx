@@ -17,8 +17,6 @@ export default function NavbarApp() {
                     navbarScroll
                     >
                         <Nav.Link href="/" data-cy="home">Home</Nav.Link>
-                        {/* <Nav.Link href="/" data-cy="home">Locations</Nav.Link>
-                        <Nav.Link href="/adventures" data-cy="home">Adventures</Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

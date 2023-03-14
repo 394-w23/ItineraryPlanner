@@ -3,7 +3,7 @@ import { useDbData } from "../../utilities/firebase";
 import './WaypointMap.css'
 
 const mapEmbedBaseUrl = "https://www.google.com/maps/embed/v1/directions";
-const API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA";
+const API_KEY = "AIzaSyAres6dxJqN_EEzqHrFIXPHg4tGVuSLERA"; // this is a deactivated API key - must add a new one!
 const mapRequestUrl = `${mapEmbedBaseUrl}?key=${API_KEY}`;
 const origin = "11 Rue Chevert, 7th arr., 75007 Paris, France";
 const origin_coordinates= "48.85563451450195, 2.308913150138946"
