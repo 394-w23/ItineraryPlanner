@@ -3,7 +3,6 @@
 The following repository is a React and Firebase application called Squirrel, a platform where digital nomads can browse locations of interest in their city and create an itinerary optimized for minimum travel time. The app was developed by Team Blue in COMP_SCI 394 (Winter 2023). The deployed site can be found here: https://itineraryplanner-67b24.web.app/. 
 
 ## Built with
-
 * React
 * Firebase
 * Bootstrap
