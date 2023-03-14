@@ -32,7 +32,7 @@ Clone this repository by running
 ```
 git clone https://github.com/394-w23/ItineraryPlanner.git
 ```
-Then, you'll either need to join the existing Firebase project (by contacting one of the original developers to be added), or create a new one using the [online Firebase portal](https://firebase.google.com/). If you decide to create a new one, follow [these instructions](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425) to set up hosting and [these instructions](https://courses.cs.northwestern.edu/394/guides/react-examples.php#add-database) to set up the realtime database. After setting up the realtime database, import the json found in mockdata/data.json within the realtime database section of your project's portal. Finally, run
+Then, you'll either need to join the existing Firebase project (by contacting one of the original developers to be added), or create a new one using the [online Firebase portal](https://firebase.google.com/). If you decide to create a new one, follow [these instructions](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425) to set up hosting and [these instructions](https://courses.cs.northwestern.edu/394/guides/react-examples.php#add-database) to set up the realtime database. For the second set of instructions, you'll have to replace your new projects configuration (which you'd get when setting it up) with the old projects configuration in src/utilities/firebase.js. After setting up the realtime database, import the json found in mockdata/data.json within the realtime database section of your project's portal. Finally, run
 ```
 npm i
 ```
