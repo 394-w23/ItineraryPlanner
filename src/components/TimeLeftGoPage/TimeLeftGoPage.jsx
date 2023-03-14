@@ -24,32 +24,43 @@ export const remainingTimeService = {
   getRemainingTime: () => subject.asObservable(),
 };
 
-export default function TimeLeftGoPage() {
+const TimeLeftGoPage = () => {
   const [duration, setDuration] = useState(0);
 
   const formattedDuration = useMemo(() => {
     var seconds = Math.floor((duration / 1000) % 60);
     var minutes = Math.floor((duration / (1000 * 60)) % 60);
     var hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
-    seconds = ("0" + seconds).slice(-2)
-    minutes = ("0" + minutes).slice(-2)
-    hours = ("0" + hours).slice(-2)
+    seconds = ("0" + seconds).slice(-2);
+    minutes = ("0" + minutes).slice(-2);
+    hours = ("0" + hours).slice(-2);
     return `${hours}:${minutes}:${seconds}`;
   }, [duration]);
 
   useEffect(() => {
     const duration = 5 * 60 * 60 * 1000 + 30 * 60 * 1000;
     const startTime = Date.now() + duration;
-    const interval = setInterval(
-      () => setDuration(startTime - Date.now()),
-      1000
-    );
+    const interval = setInterval(() => {
+      const newDuration = startTime - Date.now();
+      if (newDuration >= 0) {
+        setDuration(newDuration);
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="time-left-banner">
-      <div className="time-left">Time to explore <p className="time-duration"> : { formattedDuration}</p> </div>
+      <div className="time-left">
+        Time to explore:{" "}
+        <p data-testid="time-duration" className="time-duration">
+          {formattedDuration}
+        </p>
+      </div>
     </div>
   );
-}
+};
+
+export default TimeLeftGoPage;
